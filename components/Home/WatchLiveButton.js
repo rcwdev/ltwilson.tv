@@ -1,7 +1,7 @@
 // Module Imports
 import { useState } from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
+import { faCircleNotch, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 // Local Imports KKonaW
 import styles from "../../styles/home.module.css";
@@ -14,7 +14,7 @@ function LoadingElement() {
 
 function LiveNowButton() {
     return <button className={styles.livenow} onClick={() => { location.href = "https://twitch.tv/theltwilson" }}>
-        LIVE NOW
+        LIVE NOW <FontAwesomeIcon icon={faArrowRight} />
     </button>
 }
 
@@ -26,8 +26,15 @@ function WatchLiveButton() {
 
 export default function Button() {
     let [element, setElement] = useState(<LoadingElement />)
+    let url
 
-    fetch('http://localhost:3000/api/islive?channel=theltwilson')
+    if (process.env.NODE_ENV === "development") {
+        url = "http://localhost:3000"
+    } else {
+        url = "https://ltwilson.tv"
+    }
+
+    fetch(`${url}/api/islive?channel=theltwilson`)
         .catch(err => {
             console.error(err)
             setElement(<WatchLiveButton />)
