@@ -8,7 +8,7 @@ import "@fontsource/open-sans";
 
 // Local Imports KKonaW
 import logo from "../public/img/logo.png";
-import styles from "../styles/home.module.css";
+import styles from "../styles/Home.module.css";
 
 let WatchLiveButton = dynamic(() => import('../components/home/WatchLiveButton'))
 

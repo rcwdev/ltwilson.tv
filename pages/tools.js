@@ -4,7 +4,7 @@ import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
 
 // Local Imports KKonaW
-import styles from '../styles/home.module.css';
+import styles from '../styles/Home.module.css';
 import copege from '../public/img/emotes/Copege.png';
 
 export default function Tools() {

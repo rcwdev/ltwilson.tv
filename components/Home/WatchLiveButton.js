@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleNotch, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 // Local Imports KKonaW
-import styles from "../../styles/home.module.css";
+import styles from "../../styles/Home.module.css";
 
 function LoadingElement() {
     return <button className={styles.primary}>
