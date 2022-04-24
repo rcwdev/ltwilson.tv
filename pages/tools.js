@@ -12,8 +12,8 @@ export default function Tools() {
         <div className={styles.container}>
             <div className={styles.card}>
                 <div className="text_center">
-                    <Image src={copege}></Image>
-                    <h1>Soon.</h1>
+                    <Image src={copege} alt="An emoticon of someone consuming copium."></Image>
+                    <h1>anytime now</h1>
                     <a href="../"><FontAwesomeIcon icon={faArrowLeft}></FontAwesomeIcon>&nbsp;Go back</a>
                 </div>
             </div>
