@@ -9,11 +9,21 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@fontsource/open-sans": "^4.5.8",
+    "@fortawesome/fontawesome-svg-core": "^6.1.1",
+    "@fortawesome/free-brands-svg-icons": "^6.1.1",
+    "@fortawesome/free-solid-svg-icons": "^6.1.1",
+    "@fortawesome/react-fontawesome": "^0.1.18",
+    "@twurple/api": "^5.0.18",
+    "@twurple/auth": "^5.0.18",
     "next": "12.1.4",
     "react": "18.0.0",
-    "react-dom": "18.0.0"
+    "react-dom": "18.0.0",
+    "tmi.js": "^1.8.5"
   },
   "devDependencies": {
+    "@swc/cli": "^0.1.57",
+    "@swc/core": "^1.2.171",
     "eslint": "8.12.0",
     "eslint-config-next": "12.1.4"
   }
