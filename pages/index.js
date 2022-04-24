@@ -10,7 +10,7 @@ import "@fontsource/open-sans";
 import logo from "../public/img/logo.png";
 import styles from "../styles/Home.module.css";
 
-let WatchLiveButton = dynamic(() => import('../components/home/WatchLiveButton'))
+let WatchLiveButton = dynamic(() => import('../components/Home/WatchLiveButton'))
 
 export default function Home() {
   return (
