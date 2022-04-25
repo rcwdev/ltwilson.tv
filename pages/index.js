@@ -1,27 +1,46 @@
 // Module Imports
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTwitter, faInstagram, faYoutube, faTwitch } from "@fortawesome/free-brands-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faInstagram, faTwitch, faTwitter, faYoutube} from "@fortawesome/free-brands-svg-icons";
 import Image from "next/image";
 import Head from "next/head";
-import dynamic from 'next/dynamic';
 import "@fontsource/open-sans";
 
 // Local Imports KKonaW
 import logo from "../public/img/logo.png";
 import styles from "../styles/Home.module.css";
 
-let WatchLiveButton = dynamic(() => import('../components/Home/WatchLiveButton'))
+let url
 
-export default function Home() {
+if (process.env.NODE_ENV === "development") {
+  url = "http://localhost:3000"
+} else {
+  url = "https://ltwilson.tv"
+}
+
+function Page({data}) {
+  let LiveButton = function LiveButton() {
+    return <button className={styles.primary} onClick={() => {
+      location.href = "https://twitch.tv/theltwilson"
+    }}>Watch Live</button>
+  }
+
+  if (data.stream) {
+    LiveButton = function LiveButton() {
+      return <button className={styles.livenow} onClick={() => {
+        location.href = "https://twitch.tv/theltwilson"
+      }}>NOW LIVE</button>
+    }
+  }
+
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Lt. Wilson</title>
-        <meta name="viewport" content="width=device-width, initial-scale=0.9"></meta>
-      </Head>
-      <div className={styles.card}>
-        <div className={styles.top}>
-          <div className={styles.socials}>
+      <div className={styles.container}>
+        <Head>
+          <title>Lt. Wilson</title>
+          <meta name="viewport" content="width=device-width, initial-scale=0.9"></meta>
+        </Head>
+        <div className={styles.card}>
+          <div className={styles.top}>
+            <div className={styles.socials}>
             <a href="https://twitter.com/theltwilson" target="_blank" rel="noreferrer">
               <FontAwesomeIcon icon={faTwitter}></FontAwesomeIcon>
             </a>
@@ -52,11 +71,21 @@ export default function Home() {
         <div className={styles.navigation}>
           <button className={styles.secondary} onClick={() => {
             location.href = "./tools"
-          }}>View Tools</button>
+          }}>View Tools
+          </button>
 
-          <WatchLiveButton />
+          <LiveButton/>
+        </div>
         </div>
       </div>
-    </div>
   );
 }
+
+export async function getServerSideProps() {
+  const res = await fetch(`${url}/api/islive?channel=theltwilson`)
+  const data = await res.json()
+
+  return {props: {data}}
+}
+
+export default Page
